@@ -6,14 +6,14 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: { main: "./src/index.js" },
   output: {
-    filename: "[name]-[hash:6].js",
+    filename: "js/[name]-[hash:6].js",
     path: path.resolve(__dirname, "../", "dist")
   },
   module: {
     rules: [
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"]
+        use: [MiniCssExtractPlugin.loader, "css-loader"]
       },
       {
         test: /\.js$/,
@@ -27,14 +27,17 @@ module.exports = {
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: ["file-loader"]
+        loader: "file-loader",
+        options: {
+          outputPath: "fonts"
+        }
       }
     ]
   },
   plugins: [
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: "css/css/[name]-[hash:6].css"
+      filename: "css/[name]-[hash:6].css"
     }),
     new HtmlWebpackPlugin({
       title: "Bibliography of Ewa Lipska - dashboard",
