@@ -24,13 +24,17 @@ module.exports = {
             ["@babel/preset-env", { useBuiltIns: "usage", corejs: "2.0.0" }]
           ]
         }
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: ["file-loader"]
       }
     ]
   },
   plugins: [
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: "css/[name]-[hash:6].css"
+      filename: "css/css/[name]-[hash:6].css"
     }),
     new HtmlWebpackPlugin({
       title: "Bibliography of Ewa Lipska - dashboard",
