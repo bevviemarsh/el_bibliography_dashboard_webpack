@@ -10,11 +10,10 @@ import {
   dataGenres,
   dataPublishers,
   allPeriods
-} from "./getModifiedData";
+} from "./modifiedData";
+import { sortDataByProperty } from "./dataHelpers";
 
 function getCountedAndSortedData(dataToCount, propertyName) {
-  const sortDataByProperty = (a, b, property) => a[property] - b[property];
-
   const countedMainData = dataToCount.reduce((allProperties, property) => {
     property in allProperties
       ? allProperties[property]++
@@ -23,12 +22,10 @@ function getCountedAndSortedData(dataToCount, propertyName) {
     return allProperties;
   }, {});
 
-  const sortedMainData = Object.keys(countedMainData)
-    .map(key => ({
-      [propertyName]: String(key),
-      value: countedMainData[key]
-    }))
-    .sort((a, b) => sortDataByProperty(a, b, PROPERTY_VALUE));
+  const sortedMainData = Object.keys(countedMainData).map(key => ({
+    [propertyName]: String(key),
+    value: countedMainData[key]
+  }));
 
   return sortedMainData;
 }
@@ -41,7 +38,7 @@ export const sortedDataForCircular = getCountedAndSortedData(
 export const sortedDataForLollipop = getCountedAndSortedData(
   dataGenres,
   PROPERTY_GENRE
-);
+).sort((a, b) => sortDataByProperty(b, a, PROPERTY_VALUE));
 
 export const sortedDataForPieChart = getCountedAndSortedData(
   dataPublishers,

@@ -6,17 +6,11 @@ import {
   PROPERTY_YEAR,
   PROPERTY_OTHERS
 } from "../elements/dataProperties";
-
-const getItemByProperty = (item, property) => item[property];
-
-const getDataByProperty = (arr, getItem, propertyName) =>
-  arr.reduce((acc, el) => {
-    if (!getItem(el, propertyName)) return acc;
-    return [...acc, getItem(el, propertyName)];
-  }, []);
-
-const getAdditionalData = (arr, getItem, propertyName) =>
-  arr.find(item => getItem(item, propertyName))[propertyName];
+import {
+  getItemByProperty,
+  getDataByProperty,
+  getAdditionalData
+} from "./dataHelpers";
 
 function getPreparedData(data) {
   const additionalData = getAdditionalData(
@@ -28,23 +22,43 @@ function getPreparedData(data) {
   const dataCities = getDataByProperty(
     data,
     getItemByProperty,
+    getItemByProperty,
     PROPERTY_CITY
-  ).concat(getDataByProperty(additionalData, getItemByProperty, PROPERTY_CITY));
+  ).concat(
+    getDataByProperty(
+      additionalData,
+      getItemByProperty,
+      getItemByProperty,
+      PROPERTY_CITY
+    )
+  );
 
   const dataGenres = getDataByProperty(
     data,
     getItemByProperty,
+    getItemByProperty,
     PROPERTY_GENRE
   ).concat(
-    getDataByProperty(additionalData, getItemByProperty, PROPERTY_GENRE)
+    getDataByProperty(
+      additionalData,
+      getItemByProperty,
+      getItemByProperty,
+      PROPERTY_GENRE
+    )
   );
 
   const dataPublishers = getDataByProperty(
     data,
     getItemByProperty,
+    getItemByProperty,
     PROPERTY_PUBLISHER
   ).concat(
-    getDataByProperty(additionalData, getItemByProperty, PROPERTY_PUBLISHER)
+    getDataByProperty(
+      additionalData,
+      getItemByProperty,
+      getItemByProperty,
+      PROPERTY_PUBLISHER
+    )
   );
 
   return { dataCities, dataGenres, dataPublishers };
@@ -63,10 +77,12 @@ function getCountedDataYears(data, propertyName) {
   const mainYears = getDataByProperty(
     mainData,
     getItemByProperty,
+    getItemByProperty,
     PROPERTY_YEAR
   );
   const additionalYears = getDataByProperty(
     additionalData,
+    getItemByProperty,
     getItemByProperty,
     PROPERTY_YEAR
   );
@@ -99,8 +115,5 @@ function getCountedDataYears(data, propertyName) {
   return allPeriods;
 }
 
-export const { dataCities, dataGenres, dataPublishers } = getPreparedData(
-  data,
-  PROPERTY_GENRE
-);
+export const { dataCities, dataGenres, dataPublishers } = getPreparedData(data);
 export const allPeriods = getCountedDataYears(data, PROPERTY_YEAR);

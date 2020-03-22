@@ -1,9 +1,2 @@
-import {
-  lollipopData,
-  circularBarPlotData,
-  lineChartData,
-  pieChartData
-} from "./tools/getDataForGraphs";
+import "./view/lollipop";
 import "./assets/styles/style.css";
-
-console.log(lollipopData, circularBarPlotData, lineChartData, pieChartData);
