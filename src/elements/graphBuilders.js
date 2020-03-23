@@ -5,22 +5,23 @@ export const chartsVisualElements = {
   strokeWidth: 1,
   labelsParams: {
     fontFamily: "Muli",
-    fontWeight: "bold",
-    fontSize: "14px",
+    fontWeight: "normal",
+    fontSize: "13px",
     labelColor: "#2D1F1D",
-    opacity: "0"
+    opacityValue: "0"
   },
   lollipopAxesColor: "#7A6564",
   opacity: "opacity",
   visible: "1",
-  hidden: "0"
+  hidden: "0",
+  cursorPointer: "pointer"
 };
 
 export const chartsParams = {
   svg: "svg",
   container: field => document.getElementById(field),
   labelTypes: {
-    lollipop: ".labelsLollipop"
+    lollipopClass: ".labelsLollipop"
   },
   chartFields: {
     lollipop: "lollipop"
@@ -39,6 +40,10 @@ export const chartsParams = {
   translate: (firstMarginValue, secondMarginValue) =>
     `translate(${firstMarginValue}, ${secondMarginValue})`,
   durationTime: 2000,
-  labelDurationTime: 200,
-  click: "click"
+  labelDurationTime: 200
+};
+
+export const clickParams = {
+  click: "click",
+  clicked: true
 };

@@ -5,8 +5,8 @@
 }
 
 @font-face {
-  font-family: "Muli", sans-serif;
-  src: url("../fonts/Muli-ExtraLight.ttf") format("ttf");
+  font-family: "Muli";
+  src: url("../fonts/Muli-ExtraLight.ttf") format("truetype");
 }
 
 body {

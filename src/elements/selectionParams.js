@@ -31,6 +31,18 @@ export const selectionLabels = {
     cx: "cx",
     cy: "cy",
     r: "r",
-    fill: "fill"
+    fill: "fill",
+    cursor: "cursor"
+  },
+  labelLabels: {
+    text: "text",
+    className: "class",
+    x: "x",
+    y: "y",
+    fontFamily: "font-family",
+    fontSize: "font-size",
+    fontWeight: "font-weight",
+    fill: "fill",
+    opacity: "opacity"
   }
 };

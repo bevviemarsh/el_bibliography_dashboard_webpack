@@ -1,9 +1,6 @@
-import { chartsParams, chartsVisualElements } from "../elements/graphBuilders";
-import { chartsManager } from "../tools/chartsManager";
+import { chartsVisualElements, clickParams } from "../elements/graphBuilders";
 import { selectionParams, selectionLabels } from "../elements/selectionParams";
 
-const { click } = chartsParams;
-const { clicked } = chartsManager;
 const { selectionAll } = selectionParams;
 const { circleLabels } = selectionLabels;
 const { fill } = circleLabels;
@@ -15,7 +12,7 @@ export const handleEvents = (
   durationTime,
   labelType
 ) => {
-  const isClicked = (param1, param2) => (clicked ? param1 : param2);
+  const isClicked = (param1, param2) => (clickParams.clicked ? param1 : param2);
 
   const handleDisplayLabels = (d, i, n) => {
     selectionAll(n)
@@ -29,8 +26,8 @@ export const handleEvents = (
       .style(opacity, isClicked(visible, hidden));
   };
 
-  graphSelection.selectAll(svgSelection).on(click, (d, i, n) => {
+  graphSelection.selectAll(svgSelection).on(clickParams.click, (d, i, n) => {
     handleDisplayLabels(d, i, n);
-    clicked = !clicked;
+    clickParams.clicked = !clickParams.clicked;
   });
 };

@@ -7,7 +7,6 @@ import {
 } from "../dataTools/dataHelpers";
 
 export const chartsManager = {
-  clicked: true,
   getFormattedYear: d => Number(d.year.slice(5)),
   getElementsHigherThanOne: arr =>
     arr.filter(item => filterDataHigherThenOne(item, PROPERTY_VALUE)),
