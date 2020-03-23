@@ -1,6 +1,6 @@
-import { chartsParams } from "./graphBuilders";
-import { chartsDeviations } from "./chartsDeviations";
-import { calculatedGraphHeight } from "./svgParams";
+import { chartsParams } from "../../elements/graphBuilders";
+import { chartsDeviations } from "../../elements/chartsDeviations";
+import { calculatedGraphHeight } from "../../elements/svgParams";
 
 const { graphMargin, translate } = chartsParams;
 const { lollipopDeviations } = chartsDeviations;
