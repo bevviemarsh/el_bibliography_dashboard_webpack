@@ -1,16 +1,21 @@
 export const chartsVisualElements = {
-  lineColor: "#7A6564",
-  circleColor: "#C3501F",
-  clickedCircleColor: "#8C7776",
+  colors: {
+    lineColor: "#7A6564",
+    circleColor: "#C3501F",
+    clickedCircleColor: "#8C7776",
+    circularBarColor: "#424242",
+    clickedCircularBarColor: "#609FC0",
+    lollipopAxesColor: "#7A6564"
+  },
   strokeWidth: 1,
   labelsParams: {
     fontFamily: "Muli",
     fontWeight: "normal",
     fontSize: "13px",
     labelColor: "#2D1F1D",
-    opacityValue: "0"
+    opacityValue: "0",
+    textAnchorPos: "start"
   },
-  lollipopAxesColor: "#7A6564",
   opacity: "opacity",
   visible: "1",
   hidden: "0",
@@ -21,10 +26,12 @@ export const chartsParams = {
   svg: "svg",
   container: field => document.getElementById(field),
   labelTypes: {
-    lollipopClass: ".labelsLollipop"
+    lollipopClass: ".labelsLollipop",
+    circularClass: ".labelsCircular"
   },
   chartFields: {
-    lollipop: "lollipop"
+    lollipop: "lollipop",
+    circular: "circular"
   },
   radius: 7,
   margin: 10,
@@ -40,7 +47,10 @@ export const chartsParams = {
   translate: (firstMarginValue, secondMarginValue) =>
     `translate(${firstMarginValue}, ${secondMarginValue})`,
   durationTime: 2000,
-  labelDurationTime: 200
+  labelDurationTime: 200,
+  circularBarInnerRadius: 15,
+  circularBarOuterRadius: (graphWidthValue, graphHeightValue) =>
+    Math.min(graphWidthValue, graphHeightValue / 2)
 };
 
 export const clickParams = {

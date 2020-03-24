@@ -1,4 +1,5 @@
 import * as d3 from "d3";
+import { scaleRadial } from "d3-scale";
 
 export const selectionParams = {
   selection: d3.select,
@@ -6,6 +7,12 @@ export const selectionParams = {
   appendElement: (selection, label) => selection.append(label),
   scaleLinear: d3.scaleLinear,
   scaleBand: d3.scaleBand,
+  scaleRadial: scaleRadial,
+  arcGenerator: (innerValue, outerValue) =>
+    d3
+      .arc()
+      .innerRadius(innerValue)
+      .outerRadius(outerValue),
   axisBottom: d3.axisBottom,
   axisLeft: d3.axisLeft
 };
@@ -39,10 +46,20 @@ export const selectionLabels = {
     className: "class",
     x: "x",
     y: "y",
+    textAnchor: "text-anchor",
+    transform: "transform",
     fontFamily: "font-family",
     fontSize: "font-size",
     fontWeight: "font-weight",
     fill: "fill",
     opacity: "opacity"
+  },
+  pathLabels: {
+    path: "path",
+    d: "d",
+    fill: "fill",
+    stroke: "stroke",
+    strokeWidthLabel: "stroke-width",
+    cursor: "cursor"
   }
 };

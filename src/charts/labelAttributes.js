@@ -5,6 +5,8 @@ const {
   className,
   x,
   y,
+  textAnchor,
+  transform,
   fontFamily,
   fontSize,
   fontWeight,
@@ -18,6 +20,8 @@ export const getLabelsAttributes = (
   nameClass,
   xFn,
   yFn,
+  textAnchorPosition,
+  transformValues,
   fontFamilyType,
   fontSizeValue,
   fontWeightValue,
@@ -29,6 +33,8 @@ export const getLabelsAttributes = (
     .attr(className, nameClass.substr(1))
     .attr(x, xFn)
     .attr(y, yFn)
+    .attr(textAnchor, textAnchorPosition)
+    .attr(transform, transformValues)
     .style(fontFamily, fontFamilyType)
     .style(fontSize, fontSizeValue)
     .style(fontWeight, fontWeightValue)

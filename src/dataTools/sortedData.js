@@ -33,7 +33,7 @@ function getCountedAndSortedData(dataToCount, propertyName) {
 export const sortedDataForCircular = getCountedAndSortedData(
   dataCities,
   PROPERTY_CITY
-);
+).sort((a, b) => sortDataByProperty(b, a, PROPERTY_VALUE));
 
 export const sortedDataForLollipop = getCountedAndSortedData(
   dataGenres,

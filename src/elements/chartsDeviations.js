@@ -7,5 +7,12 @@ export const chartsDeviations = {
     chartPositionDeviation: graphMargin.top * 4,
     yPositionDeviation: 1.5,
     labelsDeviation: 3.5
+  },
+  circularBarPlotDeviations: {
+    chartPositionDeviation: {
+      horizontalParam: graphMargin.right * 3.5,
+      verticalParam: graphMargin.bottom * 2
+    },
+    labelPositionDeviation: 5
   }
 };

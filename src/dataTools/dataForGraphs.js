@@ -17,7 +17,7 @@ export const lollipopData = sortedDataForLollipop.map((d, i) => ({
   id: i,
   genre: d.genre,
   value: d.value,
-  lineColor: chartsVisualElements.lineColor,
+  lineColor: chartsVisualElements.colors.lineColor,
   x1: d.value,
   x2: 0,
   y1: d.genre,
@@ -25,7 +25,7 @@ export const lollipopData = sortedDataForLollipop.map((d, i) => ({
   cx: d.value,
   cy: d.genre,
   r: chartsParams.radius,
-  circleColor: chartsVisualElements.circleColor
+  circleColor: chartsVisualElements.colors.circleColor
 }));
 
 const preparedDataForPieChart = () => {

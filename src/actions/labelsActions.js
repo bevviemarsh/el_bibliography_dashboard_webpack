@@ -10,7 +10,9 @@ export const handleEvents = (
   graphSelection,
   svgSelection,
   durationTime,
-  labelType
+  labelType,
+  clickedColor,
+  unClickedColor
 ) => {
   const isClicked = (param1, param2) => (clickParams.clicked ? param1 : param2);
 
@@ -18,7 +20,7 @@ export const handleEvents = (
     selectionAll(n)
       .transition()
       .duration(durationTime)
-      .attr(fill, d => isClicked(clickedCircleColor, d.circleColor));
+      .attr(fill, d => isClicked(clickedColor, unClickedColor));
 
     selectionAll(labelType)
       .transition()

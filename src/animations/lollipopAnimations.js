@@ -1,6 +1,6 @@
 import { setAnimationParams } from "./animationParams";
 import { selectionLabels } from "../elements/selectionParams";
-import { xAxisLollipop } from "../tools/axesCreator";
+import { xAxisLollipop } from "../charts/lollipop/lollipopAxes";
 
 const { lineLabels, circleLabels } = selectionLabels;
 const { x1 } = lineLabels;
