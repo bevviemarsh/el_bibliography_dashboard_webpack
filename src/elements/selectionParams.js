@@ -8,11 +8,13 @@ export const selectionParams = {
   scaleLinear: d3.scaleLinear,
   scaleBand: d3.scaleBand,
   scaleRadial: scaleRadial,
+  scaleOrdinal: d3.scaleOrdinal,
   arcGenerator: (innerValue, outerValue) =>
     d3
       .arc()
       .innerRadius(innerValue)
       .outerRadius(outerValue),
+  getPie: value => d3.pie().value(value),
   axisBottom: d3.axisBottom,
   axisLeft: d3.axisLeft
 };
@@ -61,5 +63,14 @@ export const selectionLabels = {
     stroke: "stroke",
     strokeWidthLabel: "stroke-width",
     cursor: "cursor"
+  },
+  polylineLabels: {
+    polyline: "polyline",
+    className: "class",
+    fill: "fill",
+    stroke: "stroke",
+    strokeWidthLabel: "stroke-width",
+    points: "points",
+    opacity: "opacity"
   }
 };

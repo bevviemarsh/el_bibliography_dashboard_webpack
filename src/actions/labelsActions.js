@@ -1,10 +1,15 @@
-import { chartsVisualElements, clickParams } from "../elements/graphBuilders";
+import {
+  chartsVisualElements,
+  chartsParams,
+  clickParams
+} from "../elements/graphBuilders";
 import { selectionParams, selectionLabels } from "../elements/selectionParams";
 
 const { selectionAll } = selectionParams;
 const { circleLabels } = selectionLabels;
 const { fill } = circleLabels;
-const { clickedCircleColor, opacity, visible, hidden } = chartsVisualElements;
+const { opacity, visible, hidden } = chartsVisualElements;
+// const { chartFields } = chartsParams;
 
 export const handleEvents = (
   graphSelection,
@@ -16,7 +21,7 @@ export const handleEvents = (
 ) => {
   const isClicked = (param1, param2) => (clickParams.clicked ? param1 : param2);
 
-  const handleDisplayLabels = (d, i, n) => {
+  const handleDisplayLabelsAndColors = (d, i, n) => {
     selectionAll(n)
       .transition()
       .duration(durationTime)
@@ -29,7 +34,7 @@ export const handleEvents = (
   };
 
   graphSelection.selectAll(svgSelection).on(clickParams.click, (d, i, n) => {
-    handleDisplayLabels(d, i, n);
+    handleDisplayLabelsAndColors(d, i, n);
     clickParams.clicked = !clickParams.clicked;
   });
 };
