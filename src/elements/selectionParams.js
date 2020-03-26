@@ -15,8 +15,14 @@ export const selectionParams = {
       .innerRadius(innerValue)
       .outerRadius(outerValue),
   getPie: value => d3.pie().value(value),
+  getLine: (xValue, yValue) =>
+    d3
+      .line()
+      .x(xValue)
+      .y(yValue),
   axisBottom: d3.axisBottom,
-  axisLeft: d3.axisLeft
+  axisLeft: d3.axisLeft,
+  format: d3.format
 };
 
 export const selectionLabels = {
@@ -62,7 +68,9 @@ export const selectionLabels = {
     fill: "fill",
     stroke: "stroke",
     strokeWidthLabel: "stroke-width",
-    cursor: "cursor"
+    cursor: "cursor",
+    strokeDasharray: "stroke-dasharray",
+    strokeDashoffset: "stroke-dashoffset"
   },
   polylineLabels: {
     polyline: "polyline",

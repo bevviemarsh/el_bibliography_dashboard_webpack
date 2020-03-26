@@ -30,7 +30,8 @@ const {
   chartFields,
   circularBarInnerRadius,
   labelTypes,
-  labelDurationTime
+  labelDurationTime,
+  clickParams
 } = chartsParams;
 const { circular } = chartFields;
 const { pathLabels, labelLabels } = selectionLabels;
@@ -103,6 +104,7 @@ export const createCircularBarPlot = () => {
     labelDurationTime,
     circularClass,
     colors.clickedCircularBarColor,
-    colors.circularBarColor
+    colors.circularBarColor,
+    clickParams.clicked.circular
   );
 };

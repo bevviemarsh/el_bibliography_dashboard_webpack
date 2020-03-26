@@ -43,7 +43,8 @@ const {
   margin,
   durationTime,
   labelTypes,
-  labelDurationTime
+  labelDurationTime,
+  clickParams
 } = chartsParams;
 const { lollipop } = chartFields;
 const { lollipopDeviations } = chartsDeviations;
@@ -168,6 +169,7 @@ export const createLollipopChart = () => {
     labelDurationTime,
     lollipopClass,
     colors.clickedCircleColor,
-    colors.circleColor
+    colors.circleColor,
+    clickParams.clicked.lollipop
   );
 };

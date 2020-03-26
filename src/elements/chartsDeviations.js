@@ -27,5 +27,8 @@ export const chartsDeviations = {
       },
       midAngleParam: 1.3
     }
+  },
+  lineChartDeviations: {
+    lineChartHorizontalParam: graphMargin.top * 4
   }
 };

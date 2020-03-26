@@ -24,7 +24,12 @@ const {
   nonefill,
   cursorPointer
 } = chartsVisualElements;
-const { chartFields, labelTypes, labelDurationTime } = chartsParams;
+const {
+  chartFields,
+  labelTypes,
+  labelDurationTime,
+  clickParams
+} = chartsParams;
 const { pie } = chartFields;
 const { scaleOrdinal } = selectionParams;
 const { pathLabels, labelLabels, polylineLabels } = selectionLabels;
@@ -111,7 +116,8 @@ export const createPieChart = () => {
     pathLabels.path,
     labelDurationTime,
     pieClass,
-    null,
-    null
+    d => pieColors(d.value),
+    d => pieColors(d.value),
+    clickParams.clicked.pie
   );
 };
