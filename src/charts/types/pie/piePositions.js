@@ -1,6 +1,6 @@
-import { chartsParams } from "../../elements/graphBuilders";
-import { chartsDeviations } from "../../elements/chartsDeviations";
-import { selectionParams } from "../../elements/selectionParams";
+import { chartsParams } from "../../../elements/graphBuilders";
+import { chartsDeviations } from "../../../elements/chartsDeviations";
+import { selectionParams } from "../../../elements/selectionParams";
 import { pieRadiusValue, arcPie } from "./pieParams";
 
 const { translate } = chartsParams;

@@ -1,13 +1,12 @@
-import { chartsParams } from "../../elements/graphBuilders";
-import { chartsDeviations } from "../../elements/chartsDeviations";
-import { calculatedGraphHeight } from "../../elements/svgParams";
+import { chartsParams } from "../../../elements/graphBuilders";
+import { chartsDeviations } from "../../../elements/chartsDeviations";
+import { calculatedGraphHeight } from "../../../elements/svgParams";
 
 const { graphMargin, translate } = chartsParams;
-const { lollipopDeviations } = chartsDeviations;
 
 export const lollipopPosition = translate(
   graphMargin.left,
-  lollipopDeviations.chartPositionDeviation
+  chartsDeviations.lollipopDeviations.chartPositionDeviation
 );
 
 export const lollipopBottomAxisPosition = translate(0, calculatedGraphHeight);

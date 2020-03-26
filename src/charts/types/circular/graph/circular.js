@@ -1,24 +1,24 @@
-import { circularBarPlotData } from "../../dataTools/dataForGraphs";
+import { circularBarPlotData } from "../../../../dataTools/dataForGraphs";
 import {
   chartsVisualElements,
   chartsParams
-} from "../../elements/graphBuilders";
+} from "../../../../elements/graphBuilders";
 import {
   circularPosition,
   getCircularLabelsPositions
-} from "./circularPositions";
-import { getMainChartStructure } from "../chartStructure";
-import { xCircular, yCircular } from "./circularScales";
-import { circularBarsData } from "./circularBarsData";
-import { getEnteredSelectionData } from "../chartDataSelection";
-import { getLabelsAttributes } from "../labelAttributes.js";
+} from "../circularPositions";
+import { getMainChartStructure } from "../../../builders/chartStructure";
+import { xCircular, yCircular } from "../circularScales";
+import { circularBarsData } from "../circularBarsData";
+import { getEnteredSelectionData } from "../../../builders/chartDataSelection";
+import { getLabelsAttributes } from "../../../attributes/labelAttributes";
 import {
   selectionLabels,
   selectionParams
-} from "../../elements/selectionParams";
-import { getPathAttributes } from "../pathAttributes";
-import { getDataExit } from "../chartDataExit";
-import { handleEvents } from "../../actions/labelsActions";
+} from "../../../../elements/selectionParams";
+import { getPathAttributes } from "../../../attributes/pathAttributes";
+import { getDataExit } from "../../../builders/chartDataExit";
+import { handleEvents } from "../../../../actions/labelsActions";
 
 const {
   colors,
@@ -33,11 +33,6 @@ const {
   labelDurationTime,
   clickParams
 } = chartsParams;
-const { circular } = chartFields;
-const { pathLabels, labelLabels } = selectionLabels;
-const { arcGenerator } = selectionParams;
-const { text } = labelLabels;
-const { circularClass } = labelTypes;
 const {
   fontFamily,
   fontWeight,
@@ -49,20 +44,20 @@ const {
 
 export const createCircularBarPlot = () => {
   const circularBarPlotChart = getMainChartStructure(
-    circular,
+    chartFields.circular,
     circularPosition
   );
 
   const bars = getEnteredSelectionData(
     circularBarPlotChart,
-    pathLabels.path,
+    selectionLabels.pathLabels.path,
     circularBarPlotData,
     d => d.id
   );
 
   const labels = getEnteredSelectionData(
     circularBarPlotChart,
-    text,
+    selectionLabels.labelLabels.text,
     circularBarPlotData,
     d => d.id
   );
@@ -70,7 +65,9 @@ export const createCircularBarPlot = () => {
   getPathAttributes(
     bars,
     circularBarsData(
-      arcGenerator(circularBarInnerRadius, d => yCircular(d.value)),
+      selectionParams.arcGenerator(circularBarInnerRadius, d =>
+        yCircular(d.value)
+      ),
       d => xCircular(d.city),
       d => xCircular(d.city) + xCircular.bandwidth()
     ),
@@ -83,7 +80,7 @@ export const createCircularBarPlot = () => {
   getLabelsAttributes(
     labels,
     d => `${d.city}: ${d.value}`,
-    circularClass,
+    labelTypes.circularClass,
     null,
     null,
     textAnchorPos,
@@ -100,9 +97,9 @@ export const createCircularBarPlot = () => {
 
   handleEvents(
     circularBarPlotChart,
-    pathLabels.path,
+    selectionLabels.pathLabels.path,
     labelDurationTime,
-    circularClass,
+    labelTypes.circularClass,
     colors.clickedCircularBarColor,
     colors.circularBarColor,
     clickParams.clicked.circular

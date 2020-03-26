@@ -1,27 +1,27 @@
-import { pieChartData } from "../../dataTools/dataForGraphs";
-import { getMainChartStructure } from "../chartStructure";
-import { getEnteredSelectionData } from "../chartDataSelection";
-import { getDataExit } from "../chartDataExit";
+import { pieChartData } from "../../../../dataTools/dataForGraphs";
+import { getMainChartStructure } from "../../../builders/chartStructure";
+import { getEnteredSelectionData } from "../../../builders/chartDataSelection";
+import { getDataExit } from "../../../builders/chartDataExit";
 import {
   chartsVisualElements,
   chartsParams
-} from "../../elements/graphBuilders";
+} from "../../../../elements/graphBuilders";
 import {
   selectionParams,
   selectionLabels
-} from "../../elements/selectionParams";
-import { piePosition, getLabelsAndPolylinesPositions } from "./piePositions";
-import { getPieParams, arcPie } from "./pieParams";
-import { getPathAttributes } from "../pathAttributes";
-import { getLabelsAttributes } from "../labelAttributes";
-import { getPolylinesAttributes } from "../polylineAttributes";
-import { handleEvents } from "../../actions/labelsActions";
+} from "../../../../elements/selectionParams";
+import { piePosition, getLabelsAndPolylinesPositions } from "../piePositions";
+import { getPieParams, arcPie } from "../pieParams";
+import { getPathAttributes } from "../../../attributes/pathAttributes";
+import { getLabelsAttributes } from "../../../attributes/labelAttributes";
+import { getPolylinesAttributes } from "../../../attributes/polylineAttributes";
+import { handleEvents } from "../../../../actions/labelsActions";
 
 const {
   colors,
   strokeWidth,
   labelsParams,
-  nonefill,
+  noneFill,
   cursorPointer
 } = chartsVisualElements;
 const {
@@ -30,9 +30,7 @@ const {
   labelDurationTime,
   clickParams
 } = chartsParams;
-const { pie } = chartFields;
 const { scaleOrdinal } = selectionParams;
-const { pathLabels, labelLabels, polylineLabels } = selectionLabels;
 const {
   fontFamily,
   fontWeight,
@@ -40,7 +38,6 @@ const {
   labelColor,
   opacityValue
 } = labelsParams;
-const { pieClass } = labelTypes;
 const { getPieColors, createPieData } = getPieParams();
 const {
   getTranslatedLabels,
@@ -49,26 +46,26 @@ const {
 } = getLabelsAndPolylinesPositions();
 
 export const createPieChart = () => {
-  const pieChart = getMainChartStructure(pie, piePosition);
+  const pieChart = getMainChartStructure(chartFields.pie, piePosition);
 
   const pieColors = getPieColors(scaleOrdinal(), colors.piecesOfPieColors);
   const pieData = createPieData(d => d.value, pieChartData);
 
   const paths = getEnteredSelectionData(
     pieChart,
-    pathLabels.path,
+    selectionLabels.pathLabels.path,
     pieData,
     d => d.id
   );
   const labels = getEnteredSelectionData(
     pieChart,
-    labelLabels.text,
+    selectionLabels.labelLabels.text,
     pieData,
     d => d.id
   );
   const polylines = getEnteredSelectionData(
     pieChart,
-    polylineLabels.polyline,
+    selectionLabels.polylineLabels.polyline,
     pieData,
     d => d.id
   );
@@ -85,7 +82,7 @@ export const createPieChart = () => {
   getLabelsAttributes(
     labels,
     d => d.data.publisher,
-    pieClass,
+    labelTypes.pieClass,
     null,
     null,
     d => getPositionatedLabels(d),
@@ -99,8 +96,8 @@ export const createPieChart = () => {
 
   getPolylinesAttributes(
     polylines,
-    pieClass,
-    nonefill,
+    labelTypes.pieClass,
+    noneFill,
     colors.strokeColor,
     strokeWidth,
     d => getPositionatedPolylines(d),
@@ -113,9 +110,9 @@ export const createPieChart = () => {
 
   handleEvents(
     pieChart,
-    pathLabels.path,
+    selectionLabels.pathLabels.path,
     labelDurationTime,
-    pieClass,
+    labelTypes.pieClass,
     d => pieColors(d.value),
     d => pieColors(d.value),
     clickParams.clicked.pie

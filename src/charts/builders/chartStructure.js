@@ -1,7 +1,17 @@
-import { mainSvgCreator } from "../tools/svgElementsCreator";
-import { selectionParams, selectionLabels } from "../elements/selectionParams";
-import { mainContainer, basicWidth, basicHeight } from "../elements/svgParams";
-import { calculatedSvgWidth, calculatedSvgHeight } from "../elements/svgParams";
+import { mainSvgCreator } from "../../tools/svgElementsCreator";
+import {
+  selectionParams,
+  selectionLabels
+} from "../../elements/selectionParams";
+import {
+  mainContainer,
+  basicWidth,
+  basicHeight
+} from "../../elements/svgParams";
+import {
+  calculatedSvgWidth,
+  calculatedSvgHeight
+} from "../../elements/svgParams";
 
 const { selection, appendElement } = selectionParams;
 const { svg, group, width, height, transform } = selectionLabels;

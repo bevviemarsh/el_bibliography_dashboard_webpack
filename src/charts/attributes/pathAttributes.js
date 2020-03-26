@@ -1,4 +1,4 @@
-import { selectionLabels } from "../elements/selectionParams";
+import { selectionLabels } from "../../elements/selectionParams";
 
 const { pathLabels } = selectionLabels;
 const { d, fill, stroke, strokeWidthLabel, cursor } = pathLabels;

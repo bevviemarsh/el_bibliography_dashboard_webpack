@@ -1,7 +1,7 @@
-import { createLollipopChart } from "../charts/lollipop/lollipop";
-import { createCircularBarPlot } from "../charts/circular/circular";
-import { createPieChart } from "../charts/pie/pie";
-import { createLineChart } from "../charts/line/line";
+import { createCircularBarPlot } from "../charts/types/circular/graph/circular";
+import { createLollipopChart } from "../charts/types/lollipop/graph/lollipop";
+import { createPieChart } from "../charts/types/pie/graph/pie";
+import { createLineChart } from "../charts/types/line/graph/line";
 
 createCircularBarPlot();
 createLollipopChart();

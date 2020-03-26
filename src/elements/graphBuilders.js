@@ -26,7 +26,7 @@ export const chartsVisualElements = {
   opacity: "opacity",
   visible: "1",
   hidden: "0",
-  nonefill: "none",
+  noneFill: "none",
   cursorPointer: "pointer"
 };
 

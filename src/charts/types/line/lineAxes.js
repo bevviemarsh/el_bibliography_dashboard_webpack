@@ -1,14 +1,17 @@
-import { xAxisGenerator, yAxisGenerator } from "../../tools/axesGenerator";
-import { selectionParams } from "../../elements/selectionParams";
-import { lineChartData } from "../../dataTools/dataForGraphs";
-import { chartsParams } from "../../elements/graphBuilders";
+import { xAxisGenerator, yAxisGenerator } from "../../../tools/axesGenerator";
+import { selectionParams } from "../../../elements/selectionParams";
+import { lineChartData } from "../../../dataTools/dataForGraphs";
+import { chartsParams } from "../../../elements/graphBuilders";
 import {
   calculatedGraphWidth,
   calculatedGraphHeight
-} from "../../elements/svgParams";
-import { chartsManager } from "../../tools/chartsManager";
-import { getItemByProperty } from "../../dataTools/dataHelpers";
-import { PROPERTY_YEAR, PROPERTY_VALUE } from "../../elements/dataProperties";
+} from "../../../elements/svgParams";
+import { chartsManager } from "../../../tools/chartsManager";
+import { getItemByProperty } from "../../../dataTools/dataHelpers";
+import {
+  PROPERTY_YEAR,
+  PROPERTY_VALUE
+} from "../../../elements/dataProperties";
 
 const { scaleLinear, axisBottom, axisLeft, format } = selectionParams;
 const { graphMargin } = chartsParams;

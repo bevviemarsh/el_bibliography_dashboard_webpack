@@ -1,55 +1,45 @@
-import { lineChartData } from "../../dataTools/dataForGraphs";
-import { getMainChartStructure } from "../chartStructure";
-import { getChartAxes } from "../chartAxes";
-import { getEnteredSelectionData } from "../chartDataSelection";
-import { getDataExit } from "../chartDataExit";
+import { lineChartData } from "../../../../dataTools/dataForGraphs";
+import { getMainChartStructure } from "../../../builders/chartStructure";
+import { getChartAxes } from "../../../builders/chartAxes";
+import { getEnteredSelectionData } from "../../../builders/chartDataSelection";
+import { getDataExit } from "../../../builders/chartDataExit";
 import {
   chartsVisualElements,
   chartsParams
-} from "../../elements/graphBuilders";
-import {
-  selectionParams,
-  selectionLabels
-} from "../../elements/selectionParams";
+} from "../../../../elements/graphBuilders";
+import { selectionLabels } from "../../../../elements/selectionParams";
 import {
   lineChartPosition,
   lineChartBottomAxisPosition,
   lineChartLeftAxisPosition,
   labelLineChartYPosition
-} from "./linePositions";
+} from "../linePositions";
 import {
   xAxisLineChart,
   yAxisLineChart,
   bottomAxisLineChart,
   leftAxisLineChart
-} from "./lineAxes";
-import { linePathCreator } from "./lineChartLinePathCreator";
-import { getCirclesAttributes } from "../circleAttributes";
-import { getPathAttributes } from "../pathAttributes";
-import { getLabelsAttributes } from "../labelAttributes";
-import { handleEvents } from "../../actions/labelsActions";
-import {
-  handlePathAnimation,
-  handleAnimationParams
-} from "../../animations/lineChartAnimations";
+} from "../lineAxes";
+import { linePathCreator } from "../lineChartLinePathCreator";
+import { getCirclesAttributes } from "../../../attributes/circleAttributes";
+import { getPathAttributes } from "../../../attributes/pathAttributes";
+import { getLabelsAttributes } from "../../../attributes/labelAttributes";
+import { handleEvents } from "../../../../actions/labelsActions";
+import { handlePathAnimation } from "../../../../animations/lineChartAnimations";
 
 const {
   colors,
   strokeWidth,
   labelsParams,
-  nonefill,
+  noneFill,
   cursorPointer
 } = chartsVisualElements;
 const {
   chartFields,
   labelTypes,
   labelDurationTime,
-  durationTime,
-  delayTime,
   clickParams
 } = chartsParams;
-const { line } = chartFields;
-const { pathLabels, circleLabels, labelLabels } = selectionLabels;
 const {
   fontFamily,
   fontWeight,
@@ -57,12 +47,9 @@ const {
   labelColor,
   opacityValue
 } = labelsParams;
-const { lineClass } = labelTypes;
 
 export const createLineChart = () => {
-  console.log(lineChartData);
-
-  const lineChart = getMainChartStructure(line, lineChartPosition);
+  const lineChart = getMainChartStructure(chartFields.line, lineChartPosition);
 
   getChartAxes(
     lineChart,
@@ -75,21 +62,21 @@ export const createLineChart = () => {
 
   const path = getEnteredSelectionData(
     lineChart,
-    pathLabels.path,
+    selectionLabels.pathLabels.path,
     lineChartData,
     d => d.id
   );
 
   const circles = getEnteredSelectionData(
     lineChart,
-    circleLabels.circle,
+    selectionLabels.circleLabels.circle,
     lineChartData,
     d => d.id
   );
 
   const labels = getEnteredSelectionData(
     lineChart,
-    labelLabels.text,
+    selectionLabels.labelLabels.text,
     lineChartData,
     d => d.id
   );
@@ -97,7 +84,7 @@ export const createLineChart = () => {
   getPathAttributes(
     path,
     linePathCreator(lineChartData),
-    nonefill,
+    noneFill,
     colors.lineChartLineColor,
     strokeWidth,
     null
@@ -115,7 +102,7 @@ export const createLineChart = () => {
   getLabelsAttributes(
     labels,
     d => d.text,
-    lineClass,
+    labelTypes.lineClass,
     d => xAxisLineChart(d.cx),
     d => labelLineChartYPosition(yAxisLineChart, d.cy),
     null,
@@ -133,9 +120,9 @@ export const createLineChart = () => {
 
   handleEvents(
     lineChart,
-    circleLabels.circle,
+    selectionLabels.circleLabels.circle,
     labelDurationTime,
-    lineClass,
+    labelTypes.lineClass,
     colors.lineChartCircleColor,
     colors.circleColor,
     clickParams.clicked.line

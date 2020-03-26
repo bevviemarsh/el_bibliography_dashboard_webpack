@@ -1,4 +1,4 @@
-import { selectionLabels } from "../elements/selectionParams";
+import { selectionLabels } from "../../elements/selectionParams";
 
 const { circleLabels } = selectionLabels;
 const { cx, cy, r, fill, cursor } = circleLabels;

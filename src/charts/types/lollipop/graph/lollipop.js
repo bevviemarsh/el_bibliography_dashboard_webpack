@@ -1,37 +1,36 @@
-import { lollipopData } from "../../dataTools/dataForGraphs";
-import { selectionLabels } from "../../elements/selectionParams";
+import { lollipopData } from "../../../../dataTools/dataForGraphs";
+import { selectionLabels } from "../../../../elements/selectionParams";
 import {
   xAxisLollipop,
   yAxisLollipop,
   bottomAxisLollipop,
   leftAxisLollipop
-} from "./lollipopAxes";
+} from "../lollipopAxes";
 import {
   chartsVisualElements,
   chartsParams
-} from "../../elements/graphBuilders";
+} from "../../../../elements/graphBuilders";
 import {
   lollipopPosition,
   lollipopBottomAxisPosition,
   lollipopLeftAxisPosition,
   lollipopXPosition,
   lollipopYPosition
-} from "./lollipopPositions";
-import { chartsDeviations } from "../../elements/chartsDeviations";
-import { getMainChartStructure } from "../chartStructure";
-import { getChartAxes } from "../chartAxes";
-import { getEnteredSelectionData } from "../chartDataSelection";
-import { getLinesAttributes } from "../lineAttributes";
-import { getCirclesAttributes } from "../circleAttributes";
-import { getLabelsAttributes } from "../labelAttributes.js";
+} from "../lollipopPositions";
+import { chartsDeviations } from "../../../../elements/chartsDeviations";
+import { getMainChartStructure } from "../../../builders/chartStructure";
+import { getChartAxes } from "../../../builders/chartAxes";
+import { getEnteredSelectionData } from "../../../builders/chartDataSelection";
+import { getLinesAttributes } from "../../../attributes/lineAttributes";
+import { getCirclesAttributes } from "../../../attributes/circleAttributes";
+import { getLabelsAttributes } from "../../../attributes/labelAttributes.js";
 import {
   getLinesAnimated,
   getCirclesAnimated
-} from "../../animations/lollipopAnimations";
-import { getDataExit } from "../chartDataExit";
-import { handleEvents } from "../../actions/labelsActions";
+} from "../../../../animations/lollipopAnimations";
+import { getDataExit } from "../../../builders/chartDataExit";
+import { handleEvents } from "../../../../actions/labelsActions";
 
-const { lineLabels, circleLabels, labelLabels } = selectionLabels;
 const {
   colors,
   strokeWidth,
@@ -46,12 +45,6 @@ const {
   labelDurationTime,
   clickParams
 } = chartsParams;
-const { lollipop } = chartFields;
-const { lollipopDeviations } = chartsDeviations;
-const { yPositionDeviation, labelsDeviation } = lollipopDeviations;
-const { line } = lineLabels;
-const { circle } = circleLabels;
-const { text } = labelLabels;
 const {
   fontFamily,
   fontWeight,
@@ -59,10 +52,12 @@ const {
   labelColor,
   opacityValue
 } = labelsParams;
-const { lollipopClass } = labelTypes;
 
 export const createLollipopChart = () => {
-  const lollipopChart = getMainChartStructure(lollipop, lollipopPosition);
+  const lollipopChart = getMainChartStructure(
+    chartFields.lollipop,
+    lollipopPosition
+  );
 
   getChartAxes(
     lollipopChart,
@@ -75,21 +70,21 @@ export const createLollipopChart = () => {
 
   const lines = getEnteredSelectionData(
     lollipopChart,
-    line,
+    selectionLabels.lineLabels.line,
     lollipopData,
     d => d.id
   );
 
   const circles = getEnteredSelectionData(
     lollipopChart,
-    circle,
+    selectionLabels.circleLabels.circle,
     lollipopData,
     d => d.id
   );
 
   const labels = getEnteredSelectionData(
     lollipopChart,
-    text,
+    selectionLabels.labelLabels.text,
     lollipopData,
     d => d.id
   );
@@ -104,7 +99,7 @@ export const createLollipopChart = () => {
         d.y1,
         margin,
         strokeWidth,
-        yPositionDeviation
+        chartsDeviations.lollipopDeviations.yPositionDeviation
       ),
     d =>
       lollipopYPosition(
@@ -112,7 +107,7 @@ export const createLollipopChart = () => {
         d.y2,
         margin,
         strokeWidth,
-        yPositionDeviation
+        chartsDeviations.lollipopDeviations.yPositionDeviation
       ),
     d => d.lineColor,
     strokeWidth
@@ -127,7 +122,7 @@ export const createLollipopChart = () => {
         d.cy,
         margin,
         strokeWidth,
-        yPositionDeviation
+        chartsDeviations.lollipopDeviations.yPositionDeviation
       ),
     d => d.r,
     d => d.circleColor,
@@ -137,7 +132,7 @@ export const createLollipopChart = () => {
   getLabelsAttributes(
     labels,
     d => `${d.genre}: ${d.value}`,
-    lollipopClass,
+    labelTypes.lollipopClass,
     d => lollipopXPosition(xAxisLollipop, d.cx, margin),
     d =>
       lollipopYPosition(
@@ -145,8 +140,8 @@ export const createLollipopChart = () => {
         d.cy,
         margin,
         strokeWidth,
-        yPositionDeviation
-      ) + labelsDeviation,
+        chartsDeviations.lollipopDeviations.yPositionDeviation
+      ) + chartsDeviations.lollipopDeviations.labelsDeviation,
     null,
     null,
     fontFamily,
@@ -165,9 +160,9 @@ export const createLollipopChart = () => {
 
   handleEvents(
     lollipopChart,
-    circle,
+    selectionLabels.circleLabels.circle,
     labelDurationTime,
-    lollipopClass,
+    labelTypes.lollipopClass,
     colors.clickedCircleColor,
     colors.circleColor,
     clickParams.clicked.lollipop

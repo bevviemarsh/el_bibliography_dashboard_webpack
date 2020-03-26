@@ -1,10 +1,9 @@
-import { chartsParams } from "../../elements/graphBuilders";
-import { chartsDeviations } from "../../elements/chartsDeviations";
+import { chartsParams } from "../../../elements/graphBuilders";
+import { chartsDeviations } from "../../../elements/chartsDeviations";
 
-const { translate } = chartsParams;
 const { circularBarPlotDeviations } = chartsDeviations;
 
-export const circularPosition = translate(
+export const circularPosition = chartsParams.translate(
   circularBarPlotDeviations.chartPositionDeviation.horizontalParam,
   circularBarPlotDeviations.chartPositionDeviation.verticalParam
 );

@@ -1,4 +1,7 @@
-import { selectionParams, selectionLabels } from "../elements/selectionParams";
+import {
+  selectionParams,
+  selectionLabels
+} from "../../elements/selectionParams";
 
 const { appendElement } = selectionParams;
 const { group, transform, color } = selectionLabels;

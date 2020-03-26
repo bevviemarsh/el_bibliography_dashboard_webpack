@@ -1,4 +1,4 @@
-import { selectionLabels } from "../elements/selectionParams";
+import { selectionLabels } from "../../elements/selectionParams";
 
 const { lineLabels } = selectionLabels;
 const { x1, x2, y1, y2, stroke, strokeWidthLabel } = lineLabels;
