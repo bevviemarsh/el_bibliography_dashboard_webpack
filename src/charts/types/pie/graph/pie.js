@@ -6,16 +6,14 @@ import {
   chartsVisualElements,
   chartsParams
 } from "../../../../elements/graphBuilders";
-import {
-  selectionParams,
-  selectionLabels
-} from "../../../../elements/selectionParams";
+import { selectionLabels } from "../../../../elements/selectionParams";
 import { piePosition, getLabelsAndPolylinesPositions } from "../piePositions";
 import { getPieParams, arcPie } from "../pieParams";
 import { getPathAttributes } from "../../../attributes/pathAttributes";
 import { getLabelsAttributes } from "../../../attributes/labelAttributes";
 import { getPolylinesAttributes } from "../../../attributes/polylineAttributes";
 import { handleEvents } from "../../../../actions/labelsActions";
+import { handlePieChartAnimation } from "../../../../animations/pieChartAnimation";
 
 const {
   colors,
@@ -30,15 +28,15 @@ const {
   labelDurationTime,
   clickParams
 } = chartsParams;
-const { scaleOrdinal } = selectionParams;
 const {
   fontFamily,
   fontWeight,
   fontSize,
   labelColor,
-  opacityValue
+  opacityValue,
+  letterSpacing
 } = labelsParams;
-const { getPieColors, createPieData } = getPieParams();
+const { createPieData } = getPieParams();
 const {
   getTranslatedLabels,
   getPositionatedLabels,
@@ -48,7 +46,6 @@ const {
 export const createPieChart = () => {
   const pieChart = getMainChartStructure(chartFields.pie, piePosition);
 
-  const pieColors = getPieColors(scaleOrdinal(), colors.piecesOfPieColors);
   const pieData = createPieData(d => d.value, pieChartData);
 
   const paths = getEnteredSelectionData(
@@ -57,6 +54,7 @@ export const createPieChart = () => {
     pieData,
     d => d.id
   );
+
   const labels = getEnteredSelectionData(
     pieChart,
     selectionLabels.labelLabels.text,
@@ -73,8 +71,8 @@ export const createPieChart = () => {
   getPathAttributes(
     paths,
     arcPie,
-    d => pieColors(d.value),
-    colors.strokeColor,
+    colors.pieColor,
+    colors.pieLinesColor,
     strokeWidth,
     cursorPointer
   );
@@ -91,14 +89,15 @@ export const createPieChart = () => {
     fontWeight,
     fontSize,
     labelColor,
-    opacityValue
+    opacityValue,
+    letterSpacing
   );
 
   getPolylinesAttributes(
     polylines,
     labelTypes.pieClass,
     noneFill,
-    colors.strokeColor,
+    colors.piePolylineColors,
     strokeWidth,
     d => getPositionatedPolylines(d),
     opacityValue
@@ -108,13 +107,15 @@ export const createPieChart = () => {
   getDataExit(labels);
   getDataExit(polylines);
 
+  handlePieChartAnimation(paths);
+
   handleEvents(
     pieChart,
     selectionLabels.pathLabels.path,
     labelDurationTime,
     labelTypes.pieClass,
-    d => pieColors(d.value),
-    d => pieColors(d.value),
+    colors.pieClickedColor,
+    colors.pieColor,
     clickParams.clicked.pie
   );
 };

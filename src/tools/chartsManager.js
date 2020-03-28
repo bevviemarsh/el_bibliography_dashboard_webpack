@@ -18,5 +18,7 @@ export const chartsManager = {
       PROPERTY_VALUE
     ).reduce((acc, currVal) => acc + currVal),
   getMaximumElementFromData: (arr, getItem, property) =>
-    Math.max(...arr.map(item => getItem(item, property)))
+    Math.max(...arr.map(item => getItem(item, property))),
+  getMinimumElementFromData: (arr, getItem, property) =>
+    Math.min(...arr.map(item => getItem(item, property)))
 };

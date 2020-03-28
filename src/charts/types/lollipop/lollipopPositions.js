@@ -5,8 +5,8 @@ import { calculatedGraphHeight } from "../../../elements/svgParams";
 const { graphMargin, translate } = chartsParams;
 
 export const lollipopPosition = translate(
-  graphMargin.left,
-  chartsDeviations.lollipopDeviations.chartPositionDeviation
+  chartsDeviations.lollipopDeviations.chartPositionDeviation.horizontalParam,
+  chartsDeviations.lollipopDeviations.chartPositionDeviation.verticalParam
 );
 
 export const lollipopBottomAxisPosition = translate(0, calculatedGraphHeight);

@@ -6,7 +6,7 @@ const { translate, graphMargin } = chartsParams;
 const { lineChartDeviations } = chartsDeviations;
 
 export const lineChartPosition = translate(
-  graphMargin.left,
+  graphMargin.left * 3,
   lineChartDeviations.lineChartHorizontalParam
 );
 

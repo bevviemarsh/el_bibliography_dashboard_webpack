@@ -10,11 +10,12 @@ export const pieRadiusValue = chartsParams.pieRadius(
   calculatedGraphHeight
 );
 
-export const arcPie = selectionParams.arcGenerator(null, pieRadiusValue);
+export const arcPie = selectionParams.arcGenerator(
+  chartsParams.pieInnerValue,
+  pieRadiusValue
+);
 
 export const getPieParams = () => {
-  const getPieColors = (scaleType, rangeArray) => scaleType.range(rangeArray);
-
   const createPieData = (valueFn, data) => {
     const pieFn = selectionParams.getPie(valueFn);
     const getPieData = pieFn(data);
@@ -22,7 +23,6 @@ export const getPieParams = () => {
   };
 
   return {
-    getPieColors,
     createPieData
   };
 };

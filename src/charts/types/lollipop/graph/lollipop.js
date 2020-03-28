@@ -50,7 +50,8 @@ const {
   fontWeight,
   fontSize,
   labelColor,
-  opacityValue
+  opacityValue,
+  letterSpacing
 } = labelsParams;
 
 export const createLollipopChart = () => {
@@ -131,7 +132,7 @@ export const createLollipopChart = () => {
 
   getLabelsAttributes(
     labels,
-    d => `${d.genre}: ${d.value}`,
+    d => d.value,
     labelTypes.lollipopClass,
     d => lollipopXPosition(xAxisLollipop, d.cx, margin),
     d =>
@@ -148,7 +149,8 @@ export const createLollipopChart = () => {
     fontSize,
     fontWeight,
     labelColor,
-    opacityValue
+    opacityValue,
+    letterSpacing
   );
 
   getLinesAnimated(lines, null, durationTime);

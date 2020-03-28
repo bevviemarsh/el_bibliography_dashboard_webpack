@@ -11,7 +11,8 @@ const {
   fontSize,
   fontWeight,
   fill,
-  opacity
+  opacity,
+  letterSpacing
 } = labelLabels;
 
 export const getLabelsAttributes = (
@@ -26,7 +27,8 @@ export const getLabelsAttributes = (
   fontSizeValue,
   fontWeightValue,
   colorName,
-  opacityValue
+  opacityValue,
+  letterSpacingValue
 ) =>
   selection
     .text(textFn)
@@ -39,4 +41,5 @@ export const getLabelsAttributes = (
     .style(fontSize, fontSizeValue)
     .style(fontWeight, fontWeightValue)
     .style(fill, colorName)
-    .style(opacity, opacityValue);
+    .style(opacity, opacityValue)
+    .style(letterSpacing, letterSpacingValue);

@@ -16,14 +16,15 @@ export const handleEvents = (
   const isClicked = (param1, param2) => (clickParam ? param1 : param2);
 
   const handleDisplayLabelsAndColors = (d, i, n) => {
-    setAnimationParams(
-      selectionParams.selectionAll(n),
-      null,
-      durationTime
-    ).attr(
-      selectionLabels.circleLabels.fill,
-      isClicked(clickedColor, unClickedColor)
-    );
+    setAnimationParams(selectionParams.selectionAll(n), null, durationTime)
+      .attr(
+        selectionLabels.circleLabels.fill,
+        isClicked(clickedColor, unClickedColor)
+      )
+      .attr(
+        selectionLabels.circleLabels.r,
+        isClicked(chartsParams.clickedRadius, chartsParams.radius)
+      );
 
     setAnimationParams(
       selectionParams.selectionAll(labelType),

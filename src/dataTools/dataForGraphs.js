@@ -54,8 +54,8 @@ export const lineChartData = sortedDataForLineGraph.map((d, i) => ({
   id: i,
   year: chartsManager.getFormattedYear(d),
   value: d.value,
-  r: chartsParams.lineChartRadius,
+  r: chartsParams.radius,
   cx: chartsManager.getFormattedYear(d),
   cy: d.value,
-  text: `${d.year}: ${d.value}`
+  text: d.value
 }));

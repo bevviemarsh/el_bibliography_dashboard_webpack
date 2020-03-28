@@ -45,7 +45,8 @@ const {
   fontWeight,
   fontSize,
   labelColor,
-  opacityValue
+  opacityValue,
+  letterSpacing
 } = labelsParams;
 
 export const createLineChart = () => {
@@ -111,7 +112,8 @@ export const createLineChart = () => {
     fontSize,
     fontWeight,
     labelColor,
-    opacityValue
+    opacityValue,
+    letterSpacing
   );
 
   getDataExit(path);
@@ -123,8 +125,8 @@ export const createLineChart = () => {
     selectionLabels.circleLabels.circle,
     labelDurationTime,
     labelTypes.lineClass,
+    colors.lineChartClickedCircleColor,
     colors.lineChartCircleColor,
-    colors.circleColor,
     clickParams.clicked.line
   );
 };

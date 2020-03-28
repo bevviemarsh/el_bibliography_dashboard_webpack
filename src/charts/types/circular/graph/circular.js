@@ -39,7 +39,8 @@ const {
   fontSize,
   labelColor,
   opacityValue,
-  textAnchorPos
+  textAnchorPos,
+  letterSpacing
 } = labelsParams;
 
 export const createCircularBarPlot = () => {
@@ -89,7 +90,8 @@ export const createCircularBarPlot = () => {
     fontSize,
     fontWeight,
     labelColor,
-    opacityValue
+    opacityValue,
+    letterSpacing
   );
 
   getDataExit(bars);

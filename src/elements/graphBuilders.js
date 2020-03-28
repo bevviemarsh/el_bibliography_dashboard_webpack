@@ -1,27 +1,32 @@
 export const chartsVisualElements = {
   colors: {
     strokeColor: "black",
-    lineColor: "#7A6564",
-    circleColor: "#C3501F",
-    clickedCircleColor: "#8C7776",
-    circularBarColor: "#424242",
-    clickedCircularBarColor: "#609FC0",
-    lollipopAxesColor: "#7A6564",
-    pieLinesColor: "#1F1E1C",
-    piecesOfPieColors: ["#1A335C", "#C5743C", "#BD6454", "#1E1E1E", "#878787"],
-    lineChartLineColor: "#756939",
-    lineChartCircleColor: "#8B3B18",
-    lineChartAxesColor: "#444545",
-    lineChartClickedCircleColor: "#E2AE63"
+    lineColor: "#efeef1",
+    circleColor: "#054661",
+    clickedCircleColor: "#0988be",
+    lollipopAxesColor: "#a7b4fb",
+    circularBarColor: "#054661",
+    clickedCircularBarColor: "#0988be",
+    pieLinesColor: "#a7b4fb",
+    pieColor: "#054661",
+    pieClickedColor: "#0988be",
+    piePolylineColors: "#efeef1",
+    lineChartLineColor: "#efeef1",
+    lineChartCircleColor: "#054661",
+    lineChartAxesColor: "#a7b4fb",
+    lineChartClickedCircleColor: "#0988be"
   },
   strokeWidth: 1,
   labelsParams: {
     fontFamily: "Muli",
     fontWeight: "normal",
     fontSize: "13px",
-    labelColor: "#2D1F1D",
+    labelColor: "#1af48b",
     opacityValue: "0",
-    textAnchorPos: "start"
+    textAnchorPos: "start",
+    letterSpacing: "1",
+    axesFontSize: "12px",
+    axesLetterSpacing: "0.5"
   },
   opacity: "opacity",
   visible: "1",
@@ -54,10 +59,11 @@ export const chartsParams = {
       line: true
     }
   },
-  radius: 7,
+  radius: 5.5,
+  clickedRadius: 7,
   pieRadius: (graphWidthValue, graphHeightValue) =>
     Math.min(graphWidthValue, graphHeightValue / 2),
-  lineChartRadius: 5,
+  pieInnerValue: 30,
   margin: 10,
   graphMargin: { top: 20, left: 20, right: 100, bottom: 100 },
   offsetWidth: container => container.offsetWidth,
@@ -75,5 +81,6 @@ export const chartsParams = {
   labelDurationTime: 200,
   circularBarInnerRadius: 15,
   circularBarOuterRadius: (graphWidthValue, graphHeightValue) =>
-    Math.min(graphWidthValue, graphHeightValue / 2)
+    Math.min(graphWidthValue, graphHeightValue / 2),
+  tickSizeValue: "10"
 };

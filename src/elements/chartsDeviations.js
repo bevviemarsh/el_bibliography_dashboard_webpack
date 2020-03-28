@@ -4,20 +4,23 @@ const { graphMargin } = chartsParams;
 
 export const chartsDeviations = {
   lollipopDeviations: {
-    chartPositionDeviation: graphMargin.top * 4,
-    yPositionDeviation: 1.5,
+    chartPositionDeviation: {
+      horizontalParam: graphMargin.left * 2,
+      verticalParam: graphMargin.top * 1.5
+    },
+    yPositionDeviation: -0.7,
     labelsDeviation: 3.5
   },
   circularBarPlotDeviations: {
     chartPositionDeviation: {
-      horizontalParam: graphMargin.right * 3.5,
-      verticalParam: graphMargin.bottom * 2
+      horizontalParam: graphMargin.right * 3,
+      verticalParam: graphMargin.bottom * 1.7
     },
     labelPositionDeviation: 5
   },
   pieChartDeviations: {
     chartPositionDeviation: {
-      horizontalParam: graphMargin.right * 3.5,
+      horizontalParam: graphMargin.right * 3,
       verticalParam: graphMargin.bottom * 1.5
     },
     labelsAndPolylinesDeviation: {
@@ -29,6 +32,7 @@ export const chartsDeviations = {
     }
   },
   lineChartDeviations: {
-    lineChartHorizontalParam: graphMargin.top * 4
+    lineChartHorizontalParam: graphMargin.top * 3,
+    lineChartDataYearDeviationForXAxes: 10
   }
 };

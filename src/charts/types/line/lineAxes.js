@@ -12,21 +12,24 @@ import {
   PROPERTY_YEAR,
   PROPERTY_VALUE
 } from "../../../elements/dataProperties";
+import { chartsDeviations } from "../../../elements/chartsDeviations";
 
 const { scaleLinear, axisBottom, axisLeft, format } = selectionParams;
-const { graphMargin } = chartsParams;
-const { getMaximumElementFromData } = chartsManager;
+const { graphMargin, tickSizeValue } = chartsParams;
+const { getMaximumElementFromData, getMinimumElementFromData } = chartsManager;
 
 export const xAxisLineChart = xAxisGenerator(
   scaleLinear(),
   [
-    Math.min(...lineChartData.map(d => Number(d.text.slice(0, 4)))),
+    getMinimumElementFromData(lineChartData, getItemByProperty, PROPERTY_YEAR) -
+      chartsDeviations.lineChartDeviations.lineChartDataYearDeviationForXAxes,
     getMaximumElementFromData(lineChartData, getItemByProperty, PROPERTY_YEAR)
   ],
   [null, calculatedGraphWidth]
 );
 export const bottomAxisLineChart = axisBottom(xAxisLineChart)
   .ticks(6)
+  .tickSize(tickSizeValue)
   .tickFormat(format("d"));
 
 export const yAxisLineChart = yAxisGenerator(
@@ -37,4 +40,6 @@ export const yAxisLineChart = yAxisGenerator(
   ],
   [graphMargin.left, calculatedGraphHeight]
 );
-export const leftAxisLineChart = axisLeft(yAxisLineChart);
+export const leftAxisLineChart = axisLeft(yAxisLineChart).tickSize(
+  tickSizeValue
+);

@@ -14,7 +14,7 @@ import {
 } from "../../../elements/dataProperties";
 
 const { scaleLinear, scaleBand, axisBottom, axisLeft } = selectionParams;
-const { graphMargin } = chartsParams;
+const { graphMargin, tickSizeValue } = chartsParams;
 
 export const xAxisLollipop = xAxisGenerator(
   scaleLinear(),
@@ -28,11 +28,13 @@ export const xAxisLollipop = xAxisGenerator(
   ],
   [graphMargin.right, calculatedGraphWidth - graphMargin.left]
 );
-export const bottomAxisLollipop = axisBottom(xAxisLollipop);
+export const bottomAxisLollipop = axisBottom(xAxisLollipop).tickSize(
+  tickSizeValue
+);
 
 export const yAxisLollipop = yAxisGenerator(
   scaleBand(),
   [...lollipopData.map(item => getItemByProperty(item, PROPERTY_GENRE))],
   [graphMargin.left, calculatedGraphHeight]
 );
-export const leftAxisLollipop = axisLeft(yAxisLollipop);
+export const leftAxisLollipop = axisLeft(yAxisLollipop).tickSize(tickSizeValue);

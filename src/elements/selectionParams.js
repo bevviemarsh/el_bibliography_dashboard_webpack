@@ -8,7 +8,6 @@ export const selectionParams = {
   scaleLinear: d3.scaleLinear,
   scaleBand: d3.scaleBand,
   scaleRadial: scaleRadial,
-  scaleOrdinal: d3.scaleOrdinal,
   arcGenerator: (innerValue, outerValue) =>
     d3
       .arc()
@@ -18,11 +17,13 @@ export const selectionParams = {
   getLine: (xValue, yValue) =>
     d3
       .line()
+      .curve(d3.curveMonotoneX)
       .x(xValue)
       .y(yValue),
   axisBottom: d3.axisBottom,
   axisLeft: d3.axisLeft,
-  format: d3.format
+  format: d3.format,
+  interpolate: d3.interpolate
 };
 
 export const selectionLabels = {
@@ -60,7 +61,8 @@ export const selectionLabels = {
     fontSize: "font-size",
     fontWeight: "font-weight",
     fill: "fill",
-    opacity: "opacity"
+    opacity: "opacity",
+    letterSpacing: "letter-spacing"
   },
   pathLabels: {
     path: "path",
